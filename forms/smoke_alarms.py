@@ -2,11 +2,31 @@ import streamlit as st
 
 def smoke_alarms_form():
     st.header("Smoke Alarms")
-    status = st.selectbox("Alarms", ["PASS", "FAIL"], key="alarms_status")
-    photos = st.file_uploader(
-        "Upload photos for Alarms",
-        type=["jpg", "jpeg", "png"],
-        accept_multiple_files=True,
-        key="alarms_photos"
+
+    hhs_status = st.selectbox(
+        "HHS property compliancy status:",
+        ["Property is compliant", "Property is NOT compliant"],
+        key="smoke_hhs_status"
     )
-    return {"status": status, "photos": photos}
+    working = st.selectbox(
+        "Working smoke alarms:",
+        ["Yes", "No"],
+        key="smoke_working"
+    )
+    within_3m = st.selectbox(
+        "Within 3m of a bedroom:",
+        ["Yes", "No"],
+        key="smoke_within_3m"
+    )
+    compliant = st.selectbox(
+        "Compliant smoke alarm:",
+        ["Yes", "No"],
+        key="smoke_compliant"
+    )
+
+    return {
+        "hhs_status": hhs_status,
+        "working": working,
+        "within_3m": within_3m,
+        "compliant": compliant,
+    }

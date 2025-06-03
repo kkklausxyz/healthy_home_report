@@ -4,6 +4,7 @@ import os
 from pdf_generator.header_page import generate_header_page_elements
 from pdf_generator.heating_generator import heating_section
 from pdf_generator.ventilation_generator import ventilation_section
+from pdf_generator.draught_generator import draught_section
 
 
 from datetime import datetime
@@ -12,6 +13,7 @@ from PIL import Image as PILImage
 from forms.basic_info import basic_info_form
 from forms.heating import heating_form
 from forms.ventilation import ventilation_form
+from forms.draught import draught_form
 
 from reportlab.platypus import SimpleDocTemplate
 
@@ -24,6 +26,8 @@ st.markdown("---")
 heating_data = heating_form()
 st.markdown("---")
 ventilation_data = ventilation_form()
+st.markdown("---")
+draught_data = draught_form()
 st.markdown("---")
 
 if st.button("Generate PDF Report"):
@@ -64,6 +68,7 @@ if st.button("Generate PDF Report"):
     elements += generate_header_page_elements(basic_info, photo_path=temp_photo_path)
     elements += heating_section(heating_data, heating_photo_paths)
     elements += ventilation_section(ventilation_data, fans_photo_paths)
+    elements += draught_section(draught_data)
 
     # Build the PDF
     doc.build(elements)

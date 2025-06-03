@@ -20,9 +20,6 @@ def heating_form():
     heater_compliant = st.text_input("Heater Compliant (e.g. Yes (6kw+8kw heat pump)):", key="heater_compliant")
     operational = st.selectbox("Operational:", ["Yes", "No"], key="heater_operational")
 
-    # Results/assessment/extra
-    assessment_results = st.text_area("Heating assessment tool results/notes:", key="heating_results")
-
     # Photos
     photos = st.file_uploader(
         "Upload photos for Heating",
@@ -39,6 +36,5 @@ def heating_form():
         "exempt_from_hhs": exempt_from_hhs,
         "heater_compliant": heater_compliant,
         "operational": operational,
-        "assessment_results": assessment_results,
         "photos": photos
     }

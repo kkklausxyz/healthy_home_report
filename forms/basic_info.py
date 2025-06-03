@@ -7,6 +7,7 @@ def basic_info_form():
     assessor_name = st.text_input("Assessor name:")
     email = st.text_input("Email:")
     phone = st.text_input("Phone:")
+    photo = st.file_uploader("Upload property photo", type=["jpg", "jpeg", "png"])
 
     return {
         "property_address": property_address,
@@ -14,4 +15,5 @@ def basic_info_form():
         "assessor_name": assessor_name,
         "email": email,
         "phone": phone,
+        "photo": photo,
     }

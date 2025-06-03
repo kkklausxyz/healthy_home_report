@@ -5,6 +5,7 @@ from pdf_generator.header_page import generate_header_page_elements
 from pdf_generator.heating_generator import heating_section
 from pdf_generator.ventilation_generator import ventilation_section
 from pdf_generator.draught_generator import draught_section
+from pdf_generator.smoke_alarms_generator import smoke_alarms_section
 
 
 from datetime import datetime
@@ -14,6 +15,7 @@ from forms.basic_info import basic_info_form
 from forms.heating import heating_form
 from forms.ventilation import ventilation_form
 from forms.draught import draught_form
+from forms.smoke_alarms import smoke_alarms_form
 
 from reportlab.platypus import SimpleDocTemplate
 
@@ -28,6 +30,8 @@ st.markdown("---")
 ventilation_data = ventilation_form()
 st.markdown("---")
 draught_data = draught_form()
+st.markdown("---")
+smoke_alarms_data = smoke_alarms_form()
 st.markdown("---")
 
 if st.button("Generate PDF Report"):
@@ -69,6 +73,7 @@ if st.button("Generate PDF Report"):
     elements += heating_section(heating_data, heating_photo_paths)
     elements += ventilation_section(ventilation_data, fans_photo_paths)
     elements += draught_section(draught_data)
+    elements += smoke_alarms_section(smoke_alarms_data)
 
     # Build the PDF
     doc.build(elements)

@@ -75,4 +75,16 @@ def draught_section(draught_data):
     elements.append(Paragraph(f'<b>Gaps or holes</b>: {draught_data["windows_gaps"]}', label_style))
     elements.append(Spacer(1, 16))
 
+    # Red horizontal line at bottom
+    elements.append(Spacer(1, 10))
+    elements.append(
+        HRFlowable(
+            width="100%",
+            thickness=3,
+            color=colors.red,
+            spaceBefore=0,
+            spaceAfter=0
+        )
+    )
+
     return elements
